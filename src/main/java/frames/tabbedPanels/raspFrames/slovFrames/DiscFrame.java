@@ -31,7 +31,7 @@ public class DiscFrame {
             public void fillMas() {
                 for (int i = 0; i < mas.length; i++) {
                     DiscEntity entity = (DiscEntity) list.get(i);
-                    mas[i][0] = entity.getКодДисц();
+                    mas[i][0] = entity.getId();
                     mas[i][1] = entity.getНаимДисц();
                     mas[i][2] = entity.getКодКаф().getНаимКаф();
                     mas[i][3] = entity.getКодКаф().getРангКаф();
@@ -70,7 +70,7 @@ public class DiscFrame {
             public Object getEntity() {
                 DiscEntity entity = new DiscEntity();
                 int selectedRow = table.getSelectedRow();
-                entity.setКодДисц((Integer) model.getValueAt(selectedRow,0));
+                entity.setId((Integer) model.getValueAt(selectedRow,0));
                 entity.setНаимДисц((String) model.getValueAt(selectedRow,1));
                 JComboBox box = (JComboBox) editor.getComponent();
                 int index = box.getSelectedIndex();

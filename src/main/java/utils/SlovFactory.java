@@ -20,7 +20,7 @@ public class SlovFactory extends JFrame {
 
     public SlovFactory(String text, TableFactory tableFactory, ButtonsMenu menu) {
         this.tableFactory= tableFactory;
-        this.head = tableFactory.getHead();
+        //this.head = tableFactory.getHead();
         this.widths = tableFactory.getWidths();
         this.entities = tableFactory.getList();
 

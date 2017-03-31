@@ -7,21 +7,22 @@ import java.util.Collection;
  * Created by Maxon on 23.02.2017.
  */
 @Entity
-@Table(name = "disc", schema = "maxdip")
+@Table(name = "disc", schema = "maxdip", catalog = "")
 public class DiscEntity {
-    private int кодДисц;
+    private int id;
     private String наимДисц;
     private KafEntity кодКаф;
     private Boolean сдо;
+    private Collection<RaspEntity> RaspList;
 
     @Id
-    @Column(name = "КодДисц", nullable = false)
-    public int getКодДисц() {
-        return кодДисц;
+    @Column(name = "id", nullable = false)
+    public int getId() {
+        return id;
     }
 
-    public void setКодДисц(int кодДисц) {
-        this.кодДисц = кодДисц;
+    public void setId(int кодДисц) {
+        this.id = кодДисц;
     }
 
     @Basic
@@ -33,7 +34,6 @@ public class DiscEntity {
     public void setНаимДисц(String наимДисц) {
         this.наимДисц = наимДисц;
     }
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "КодКаф")
@@ -69,7 +69,7 @@ public class DiscEntity {
 
         DiscEntity entity = (DiscEntity) o;
 
-        if (кодДисц != entity.кодДисц) return false;
+        if (id != entity.id) return false;
         if (наимДисц != null ? !наимДисц.equals(entity.наимДисц) : entity.наимДисц != null) return false;
         if (кодКаф != null ? !кодКаф.equals(entity.кодКаф) : entity.кодКаф != null) return false;
         if (сдо != null ? !сдо.equals(entity.сдо) : entity.сдо != null) return false;
@@ -79,17 +79,14 @@ public class DiscEntity {
 
     @Override
     public int hashCode() {
-        int result = кодДисц;
+        int result = id;
         result = 31 * result + (наимДисц != null ? наимДисц.hashCode() : 0);
         result = 31 * result + (кодКаф != null ? кодКаф.hashCode() : 0);
         result = 31 * result + (сдо != null ? сдо.hashCode() : 0);
         return result;
     }
 
-
-    private Collection<RaspEntity> RaspList;
-
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "кодДисц")
+    @OneToMany(mappedBy = "кодДисц")
     public Collection<RaspEntity> getRaspList() {
         return RaspList;
     }
@@ -98,5 +95,5 @@ public class DiscEntity {
         RaspList = raspList;
     }
 
-    private Collection<RaspEntity> raspList;
+
 }

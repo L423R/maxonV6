@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by Maxon on 06.03.2017.
  */
 @Entity
-@Table(name = "preps", schema = "maxdip")
+@Table(name = "preps", schema = "maxdip", catalog = "")
 public class PrepsEntity {
     private Boolean прАрх;
     private NprEntity кодНпр;
@@ -42,6 +42,7 @@ public class PrepsEntity {
     private String должнФдо;
     private Boolean прФдо;
     private int id;
+    private Collection<RaspEntity> raspList;
 
     @Basic
     @Column(name = "ПрАрх", nullable = true)
@@ -52,7 +53,6 @@ public class PrepsEntity {
     public void setПрАрх(Boolean прАрх) {
         this.прАрх = прАрх;
     }
-
 
     @ManyToOne
     @JoinColumn(name = "КодНПР", nullable = true)
@@ -462,8 +462,6 @@ public class PrepsEntity {
                 '}';
     }
 
-    private Collection<RaspEntity> raspList;
-
     @OneToMany(mappedBy = "кодПреп",orphanRemoval = true)
     public Collection<RaspEntity> getRaspList() {
         return raspList;
@@ -471,5 +469,16 @@ public class PrepsEntity {
 
     public void setRaspList(Collection<RaspEntity> raspList) {
         this.raspList = raspList;
+    }
+
+    private Collection<NagrEntity> nagrList;
+
+    @OneToMany(mappedBy = "prepsByКодПреп",fetch = FetchType.EAGER)
+    public Collection<NagrEntity> getNagrList() {
+        return nagrList;
+    }
+
+    public void setNagrList(Collection<NagrEntity> nagrList) {
+        this.nagrList = nagrList;
     }
 }

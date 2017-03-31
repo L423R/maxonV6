@@ -1,6 +1,5 @@
 package utils;
 
-import dao.DiscEntity;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;

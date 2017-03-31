@@ -3,7 +3,6 @@ package frames.tabbedPanels.raspFrames;
 import controllers.RaspController;
 import dao.*;
 import frames.tabbedPanels.raspFrames.slovFrames.RaspFrame;
-import models.MainModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jdesktop.swingx.JXDatePicker;
@@ -193,7 +192,7 @@ public class FormRaspFrame extends JFrame {
             ArrayList<String> nameList = new ArrayList<String>();
             for (DiscEntity entity:discEntityList)
             {
-                String s=entity.getКодДисц()+"|"+entity.getНаимДисц();
+                String s=entity.getId()+"|"+entity.getНаимДисц();
                 nameList.add(s);
             }
             Object[] disc = nameList.toArray();

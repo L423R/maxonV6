@@ -2,11 +2,9 @@ package dao;
 
 import javax.persistence.*;
 
-/**
- * Created by Maxon on 06.03.2017.
- */
+
 @Entity
-@Table(name = "stavki", schema = "maxdip", catalog = "")
+@Table(name = "stavki", schema = "maxdip")
 public class StavkiEntity {
     private int id;
     private String наимСтав;
@@ -128,4 +126,5 @@ public class StavkiEntity {
         result = 31 * result + (примеч != null ? примеч.hashCode() : 0);
         return result;
     }
+
 }

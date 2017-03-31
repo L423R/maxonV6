@@ -1,6 +1,8 @@
 package frames;
 
 import controllers.MainController;
+import frames.tabbedPanels.DocsPanel;
+import frames.tabbedPanels.PrepPanel;
 import frames.tabbedPanels.RaspPanel;
 import models.MainModel;
 
@@ -68,8 +70,8 @@ public class MainFrame extends JFrame {
             tabbedPane.setPreferredSize(new Dimension(550,300));
             tabbedPane.setFont(new Font("Verdana",Font.BOLD,12));
             tabbedPane.addTab("Расписание",new RaspPanel(controller));
-            tabbedPane.addTab("Преподаватели",new Panel32());
-            tabbedPane.addTab("Документы оплаты",new Panel33());
+            tabbedPane.addTab("Преподаватели",new PrepPanel(controller));
+            tabbedPane.addTab("Документы оплаты",new DocsPanel());
             tabbedPane.addTab("Сводки и отчеты",new Panel34());
             add(tabbedPane);
 
