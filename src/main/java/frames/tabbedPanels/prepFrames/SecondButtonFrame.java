@@ -29,7 +29,7 @@ public class SecondButtonFrame extends JFrame {
         JLabel title = new JLabel("Просмотр/Коррекция расписания занятий группы");
         title.setPreferredSize(new Dimension(700,60));
         title.setFont(font);
-        setBounds(500,0,900,500);
+        setBounds(500,0,900,700);
         Container contentPane = getContentPane();
         contentPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -102,7 +102,7 @@ public class SecondButtonFrame extends JFrame {
         SecondInfo secondInfo = new SecondInfo();
 
         public InfoPanel() {
-            setPreferredSize(new Dimension(530,400));
+            setPreferredSize(new Dimension(530,550));
             setLayout(new FlowLayout(FlowLayout.CENTER));
 
             add(firstInfo);
@@ -267,20 +267,54 @@ public class SecondButtonFrame extends JFrame {
             public class ThirdPanel extends JPanel{
                 public ThirdPanel() {
 
-                    setPreferredSize(new Dimension(540,70));
+                    setPreferredSize(new Dimension(520,70));
                     setBorder(BorderFactory.createLineBorder(Color.red, 1));
-                    setLayout(new GridBagLayout());
-                    GridBagConstraints constraints = new GridBagConstraints();
+                    GridBagLayout gbl = new GridBagLayout();
+                    GridBagConstraints c = new GridBagConstraints();
+                    setLayout(gbl);
 
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    //constraints.weightx = 0.5;
+                    c.anchor = GridBagConstraints.NORTHWEST;
+                    c.fill   = GridBagConstraints.NONE;
+                    c.gridheight = 1;
+                    c.gridwidth  = GridBagConstraints.REMAINDER;
+                    c.gridx = GridBagConstraints.RELATIVE;
+                    c.gridy = GridBagConstraints.RELATIVE;
+                    c.insets = new Insets(10, 10, 0, 0);
+
+                    JCheckBox checkBoxFDO = new JCheckBox("Сотрудник ФДО");
+                    add(checkBoxFDO,c);
+
+                    JCheckBox checkBoxVO = new JCheckBox("Внеш. орган.");
+                    c.gridwidth = 1;
+                    add(checkBoxVO,c);
+
+                    JTextField textField1 = new JTextField(20);
+                    c.gridwidth = 1;
+                    add(textField1,c);
+
+                    JTextField textField2 = new JTextField(5);
+                    c.gridwidth = 1;
+                    add(textField2,c);
+
+                    JTextField textField3 = new JTextField(5);
+                    c.gridwidth  = GridBagConstraints.REMAINDER;
+                    c.weightx = 1.0;
+                    add(textField3,c);
+
+
+
+
+
+
+                    /*constraints.fill = GridBagConstraints.HORIZONTAL;
+                    constraints.weightx = 0.5;
                     constraints.gridy   = 0  ;
 
                     JCheckBox checkBoxFDO = new JCheckBox("Сотрудник ФДО");
 
                     constraints.fill = GridBagConstraints.HORIZONTAL;
                     constraints.gridx = 0;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridwidth = 3;
+                    constraints.gridwidth = 1;
                     add(checkBoxFDO,constraints);
 
 
@@ -289,20 +323,20 @@ public class SecondButtonFrame extends JFrame {
                     constraints.fill = GridBagConstraints.HORIZONTAL;
                     constraints.gridx = 0;      // нулевая ячейка таблицы по горизонтали
                     constraints.gridy = 1;
-                    constraints.gridwidth = 3;
+                    constraints.gridwidth = 1;
                     add(checkBoxVO,constraints);
 
                     JTextField textField1 = new JTextField();
                     constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 3;      // нулевая ячейка таблицы по горизонтали
+                    constraints.gridx = 2;      // нулевая ячейка таблицы по горизонтали
                     constraints.gridy = 1;
-                    constraints.gridwidth = 5;
+                    constraints.gridwidth = 3;
                     add(textField1,constraints);
 
 
                     JTextField textField2 = new JTextField();
                     constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 7;      // нулевая ячейка таблицы по горизонтали
+                    constraints.gridx = 5;      // нулевая ячейка таблицы по горизонтали
                     constraints.gridy = 1;
                     constraints.gridwidth = 1;
                     add(textField2,constraints);
@@ -310,11 +344,11 @@ public class SecondButtonFrame extends JFrame {
 
                     JTextField textField3 = new JTextField();
                     constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 8;      // нулевая ячейка таблицы по горизонтали
+                    constraints.gridx = 7;      // нулевая ячейка таблицы по горизонтали
                     constraints.gridy = 1;
                     constraints.gridwidth = 1;
                     add(textField3,constraints);
-
+*/
                 }
             }
         }
