@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by Maxon on 30.03.2017.
  */
-public class ThirdButtonFrame {
+public class ThirdPrepFrame {
     private SlovFactory slovFactory;
-    public ThirdButtonFrame()  {
+    public ThirdPrepFrame()  {
         String[] head = {"ид","Арх","Фамилия","Имя","Отчество","ДатаРож","Индекс","Адресс","Телефон"};
         String text = "Список преподавателей (АРХИВ)";
         int[] widths = {40,40,150,100,150,80,100,120,100};

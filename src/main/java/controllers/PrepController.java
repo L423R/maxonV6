@@ -1,8 +1,8 @@
 package controllers;
 
-import frames.tabbedPanels.prepFrames.FirstButtonFrame;
-import frames.tabbedPanels.prepFrames.SecondButtonFrame;
-import frames.tabbedPanels.prepFrames.ThirdButtonFrame;
+import frames.tabbedPanels.prepFrames.FirstPrepFrame;
+import frames.tabbedPanels.prepFrames.SecondPrepFrame;
+import frames.tabbedPanels.prepFrames.ThirdPrepFrame;
 import models.PrepModel;
 
 /**
@@ -17,23 +17,23 @@ public class PrepController {
     }
 
     public void showThirdButtonFrame(){
-        ThirdButtonFrame frame = model.getThirdButtonFrame();
+        ThirdPrepFrame frame = model.getThirdPrepFrame();
         if (frame!=null)
             frame.close();
-        model.setThirdButtonFrame(new ThirdButtonFrame());
+        model.setThirdPrepFrame(new ThirdPrepFrame());
     }
 
     public void showFirstButtonFrame(){
-        FirstButtonFrame frame = model.getFirstButtonFrame();
+        FirstPrepFrame frame = model.getFirstPrepFrame();
         if (frame!=null)
             frame.dispose();
-        model.setFirstButtonFrame(new FirstButtonFrame());
+        model.setFirstPrepFrame(new FirstPrepFrame());
     }
 
     public void showSecondButtonFrame(){
-        SecondButtonFrame frame = model.getSecondButtonFrame();
+        SecondPrepFrame frame = model.getSecondPrepFrame();
         if (frame!=null)
             frame.dispose();
-        model.setSecondButtonFrame(new SecondButtonFrame());
+        model.setSecondPrepFrame(new SecondPrepFrame());
     }
 }

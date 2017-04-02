@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Maxon on 30.03.2017.
  */
-public class FirstButtonFrame extends JFrame {
-    public FirstButtonFrame() throws HeadlessException {
+public class FirstPrepFrame extends JFrame {
+    public FirstPrepFrame() throws HeadlessException {
         Font font = new Font("Verdana",Font.BOLD,18);
         JLabel title = new JLabel("Введите первичные данные");
         title.setFont(font);

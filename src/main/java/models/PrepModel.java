@@ -1,39 +1,39 @@
 package models;
 
-import frames.tabbedPanels.prepFrames.FirstButtonFrame;
-import frames.tabbedPanels.prepFrames.SecondButtonFrame;
-import frames.tabbedPanels.prepFrames.ThirdButtonFrame;
+import frames.tabbedPanels.prepFrames.FirstPrepFrame;
+import frames.tabbedPanels.prepFrames.SecondPrepFrame;
+import frames.tabbedPanels.prepFrames.ThirdPrepFrame;
 
 /**
  * Created by Maxon on 25.03.2017.
  */
 public class PrepModel {
 
-    private SecondButtonFrame secondButtonFrame;
-    private ThirdButtonFrame thirdButtonFrame;
-    private FirstButtonFrame firstButtonFrame;
+    private SecondPrepFrame secondPrepFrame;
+    private ThirdPrepFrame thirdPrepFrame;
+    private FirstPrepFrame firstPrepFrame;
 
-    public ThirdButtonFrame getThirdButtonFrame() {
-        return thirdButtonFrame;
+    public ThirdPrepFrame getThirdPrepFrame() {
+        return thirdPrepFrame;
     }
 
-    public void setThirdButtonFrame(ThirdButtonFrame thirdButtonFrame) {
-        this.thirdButtonFrame = thirdButtonFrame;
+    public void setThirdPrepFrame(ThirdPrepFrame thirdPrepFrame) {
+        this.thirdPrepFrame = thirdPrepFrame;
     }
 
-    public FirstButtonFrame getFirstButtonFrame() {
-        return firstButtonFrame;
+    public FirstPrepFrame getFirstPrepFrame() {
+        return firstPrepFrame;
     }
 
-    public void setFirstButtonFrame(FirstButtonFrame firstButtonFrame) {
-        this.firstButtonFrame = firstButtonFrame;
+    public void setFirstPrepFrame(FirstPrepFrame firstPrepFrame) {
+        this.firstPrepFrame = firstPrepFrame;
     }
 
-    public SecondButtonFrame getSecondButtonFrame() {
-        return secondButtonFrame;
+    public SecondPrepFrame getSecondPrepFrame() {
+        return secondPrepFrame;
     }
 
-    public void setSecondButtonFrame(SecondButtonFrame secondButtonFrame) {
-        this.secondButtonFrame = secondButtonFrame;
+    public void setSecondPrepFrame(SecondPrepFrame secondPrepFrame) {
+        this.secondPrepFrame = secondPrepFrame;
     }
 }

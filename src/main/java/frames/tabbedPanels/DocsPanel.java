@@ -1,7 +1,7 @@
 package frames.tabbedPanels;
 
 import controllers.DocsController;
-import frames.tabbedPanels.docsFrames.FirstButtonFrame;
+import frames.tabbedPanels.docsFrames.FirstDocsFrame;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -52,7 +52,7 @@ public class DocsPanel extends JPanel {
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new FirstButtonFrame(new DocsController());
+                    new FirstDocsFrame(new DocsController());
                 }
             });
 

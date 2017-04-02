@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Created by Maxon on 25.03.2017.
  */
-public class FirstButtonFrame extends JFrame {
+public class FirstDocsFrame extends JFrame {
     private DocsController controller;
     private JXDatePicker picker1;
     private JXDatePicker picker2;
@@ -35,7 +35,7 @@ public class FirstButtonFrame extends JFrame {
 
 
 
-    public FirstButtonFrame(DocsController controller) throws HeadlessException {
+    public FirstDocsFrame(DocsController controller) throws HeadlessException {
         this.controller = controller;
 
         Font font = new Font("Verdana",Font.BOLD,18);
@@ -149,11 +149,11 @@ public class FirstButtonFrame extends JFrame {
                     if (nagrPanel!= null)
                         infoPanel.remove(nagrPanel);
 
-                    FirstButtonFrame.this.getContentPane().remove(infoPanel);
+                    FirstDocsFrame.this.getContentPane().remove(infoPanel);
 
                 }
                 infoPanel = new InfoPanel(entity,fio);
-                FirstButtonFrame.this.getContentPane().add(infoPanel);
+                FirstDocsFrame.this.getContentPane().add(infoPanel);
                 revalidate();
                 repaint();
             }

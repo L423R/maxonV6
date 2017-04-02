@@ -1,6 +1,7 @@
 package frames.tabbedPanels.prepFrames;
 
 import dao.PrepsEntity;
+import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
 import utils.TableFactory;
 
@@ -13,23 +14,22 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 import java.util.List;
 
 /**
  * Created by Maxon on 30.03.2017.
  */
-public class SecondButtonFrame extends JFrame {
+public class SecondPrepFrame extends JFrame {
     private JTable table;
     private Tpanel tpanel;
     private InfoPanel infoPanel;
-    public SecondButtonFrame() throws HeadlessException {
+    public SecondPrepFrame() throws HeadlessException {
 
         Font font = new Font("Verdana",Font.BOLD,18);
         JLabel title = new JLabel("Просмотр/Коррекция расписания занятий группы");
         title.setPreferredSize(new Dimension(700,60));
         title.setFont(font);
-        setBounds(500,0,900,700);
+        setBounds(350,0,900,710);
         Container contentPane = getContentPane();
         contentPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -81,7 +81,7 @@ public class SecondButtonFrame extends JFrame {
 
 
             table = tableFactory.getTable();
-            setPreferredSize(new Dimension(sum+15,400));
+            setPreferredSize(new Dimension(sum+15,700));
             table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
@@ -100,13 +100,16 @@ public class SecondButtonFrame extends JFrame {
     public class InfoPanel extends JPanel{
         FirstInfo firstInfo = new FirstInfo();
         SecondInfo secondInfo = new SecondInfo();
+        TabbedPanel tabbedPanel = new TabbedPanel();
 
         public InfoPanel() {
-            setPreferredSize(new Dimension(530,550));
+            setPreferredSize(new Dimension(530,700));
             setLayout(new FlowLayout(FlowLayout.CENTER));
 
             add(firstInfo);
             add(secondInfo);
+            add(tabbedPanel);
+
 
         }
 
@@ -136,13 +139,10 @@ public class SecondButtonFrame extends JFrame {
                 JPanel panel2 = new JPanel(new GridLayout(2,2));
                 panel2.setPreferredSize(new Dimension(170,50));
                 JLabel phone1 = new JLabel("Тел:");
-                //JLabel phone2 = new JLabel("Тел2:");
                 JLabel mail = new JLabel("mail:");
                 JTextField textPhone1 = new JTextField(20);
-                //JTextField textPhone2 = new JTextField(10);
                 JTextField textMail = new JTextField(20);
                 panel2.add(phone1);panel2.add(textPhone1);
-                //panel2.add(phone2);panel2.add(textPhone2);
                 panel2.add(mail);panel2.add(textMail);
 
 
@@ -205,8 +205,8 @@ public class SecondButtonFrame extends JFrame {
             JTextField tf = new JTextField("65");
             public SecondInfo() {
 
-                setPreferredSize(new Dimension(550,200));
-                setLayout(new FlowLayout(FlowLayout.LEFT));
+                setPreferredSize(new Dimension(550,190));
+                setLayout(new FlowLayout(FlowLayout.CENTER));
                 add(new FirstPanel());
                 add(new SecondPanel());
                 add(new ThirdPanel());
@@ -241,12 +241,7 @@ public class SecondButtonFrame extends JFrame {
                     JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
                     panel1.setPreferredSize(new Dimension(520,30));
                     panel1.add(new JLabel("Должность:"));
-                    MatteBorder mb = new MatteBorder(0, 0, 0, 0, Color.BLACK);
-                    TitledBorder tb = new TitledBorder(mb, "Кафедра/Внешний", TitledBorder.CENTER, TitledBorder.TOP);
-                    //vnesh.setBorder(tb);
                     panel1.add(vnesh);
-                    tb = new TitledBorder(mb, "Сотрудник ФДО", TitledBorder.CENTER, TitledBorder.TOP);
-                    //fdo.setBorder(tb);
                     panel1.add(new JLabel("Сотр.ФДО:"));
                     panel1.add(fdo);
 
@@ -264,91 +259,111 @@ public class SecondButtonFrame extends JFrame {
                 }
             }
 
+
+
             public class ThirdPanel extends JPanel{
                 public ThirdPanel() {
 
-                    setPreferredSize(new Dimension(520,70));
+                    setPreferredSize(new Dimension(525,50));
                     setBorder(BorderFactory.createLineBorder(Color.red, 1));
-                    GridBagLayout gbl = new GridBagLayout();
-                    GridBagConstraints c = new GridBagConstraints();
-                    setLayout(gbl);
+                    setLayout(new GridLayout(2,4));
 
-                    c.anchor = GridBagConstraints.NORTHWEST;
-                    c.fill   = GridBagConstraints.NONE;
-                    c.gridheight = 1;
-                    c.gridwidth  = GridBagConstraints.REMAINDER;
-                    c.gridx = GridBagConstraints.RELATIVE;
-                    c.gridy = GridBagConstraints.RELATIVE;
-                    c.insets = new Insets(10, 10, 0, 0);
+
 
                     JCheckBox checkBoxFDO = new JCheckBox("Сотрудник ФДО");
-                    add(checkBoxFDO,c);
+
 
                     JCheckBox checkBoxVO = new JCheckBox("Внеш. орган.");
-                    c.gridwidth = 1;
-                    add(checkBoxVO,c);
+
 
                     JTextField textField1 = new JTextField(20);
-                    c.gridwidth = 1;
-                    add(textField1,c);
+
 
                     JTextField textField2 = new JTextField(5);
-                    c.gridwidth = 1;
-                    add(textField2,c);
+
 
                     JTextField textField3 = new JTextField(5);
-                    c.gridwidth  = GridBagConstraints.REMAINDER;
-                    c.weightx = 1.0;
-                    add(textField3,c);
+
+                    add(checkBoxFDO);
+                    add(new JLabel("Наименование"));
+                    add(new JLabel("Магистр"));
+                    add(new JLabel("Бакалавр"));
+                    add(checkBoxVO);
+                    add(textField1);
+                    add(textField2);
+                    add(textField3);
+
+
+                }
+            }
+        }
+
+        public class TabbedPanel extends JPanel{
+            public TabbedPanel() {
+                setPreferredSize(new Dimension(540,350));
+                setLayout(new FlowLayout(FlowLayout.CENTER));
+                JTabbedPane tabbedPane = new JTabbedPane();
+                tabbedPane.setPreferredSize(new Dimension(530,160));
+                tabbedPane.setFont(new Font("Verdana",Font.BOLD,12));
+                tabbedPane.addTab("Оплата на интервале",new FirstTabbedPanel());
+                tabbedPane.addTab("Нагрузка семестра",new JPanel());
+                tabbedPane.addTab("Нагрузка полная",new JPanel());
+
+                add(tabbedPane);
+            }
+
+
+            public class FirstTabbedPanel extends JPanel{
+                private JXDatePicker picker1;
+                private JXDatePicker picker2;
+                private JXDatePicker picker3 = new JXDatePicker();
+                public FirstTabbedPanel() {
+                    setLayout(new FlowLayout(FlowLayout.CENTER));
+                    //setPreferredSize(new Dimension(525,330));
+                    add(new InterPanel());
+                    MatteBorder mb = new MatteBorder(1, 1, 0, 1, Color.BLACK);
+                    TitledBorder tb = new TitledBorder(mb, "Кафедра/Внешний", TitledBorder.CENTER, TitledBorder.TOP);
+                    setBorder(tb);
+                    JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                    panel.setPreferredSize(new Dimension(430,60));
+                    panel.add(new JLabel("Задайте любую дату месяца выдачи"));
+                    panel.add(picker3);
+                    JButton docs = new JButton("Документы");
+                    panel.add(docs);
+                    add(panel);
+                }
+
+                public class InterPanel extends JPanel
+                {
+                    public InterPanel() {
+                        setPreferredSize(new Dimension(430,60));
+                        setLayout(new FlowLayout());
+                        MatteBorder mb = new MatteBorder(1, 1, 1, 1, Color.BLACK);
+                        TitledBorder tb = new TitledBorder(mb, "Задайте интервал", TitledBorder.CENTER, TitledBorder.TOP);
+                        setBorder(tb);
+
+                        JLabel label1 = new JLabel("с");
+                        picker1 = new JXDatePicker();
+                        JLabel label2 = new JLabel("по");
+                        picker2 = new JXDatePicker();
+                        JButton button = new JButton("OK");
+                        button.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+
+                            }
+                        });
 
 
 
+                        add(label1);
+                        add(picker1);
+                        add(label2);
+                        add(picker2);
+                        add(button);
+
+                    }
 
 
-
-                    /*constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.weightx = 0.5;
-                    constraints.gridy   = 0  ;
-
-                    JCheckBox checkBoxFDO = new JCheckBox("Сотрудник ФДО");
-
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 0;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridwidth = 1;
-                    add(checkBoxFDO,constraints);
-
-
-                    JCheckBox checkBoxVO = new JCheckBox("Внеш. орган.");
-
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 0;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridy = 1;
-                    constraints.gridwidth = 1;
-                    add(checkBoxVO,constraints);
-
-                    JTextField textField1 = new JTextField();
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 2;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridy = 1;
-                    constraints.gridwidth = 3;
-                    add(textField1,constraints);
-
-
-                    JTextField textField2 = new JTextField();
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 5;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridy = 1;
-                    constraints.gridwidth = 1;
-                    add(textField2,constraints);
-
-
-                    JTextField textField3 = new JTextField();
-                    constraints.fill = GridBagConstraints.HORIZONTAL;
-                    constraints.gridx = 7;      // нулевая ячейка таблицы по горизонтали
-                    constraints.gridy = 1;
-                    constraints.gridwidth = 1;
-                    add(textField3,constraints);
-*/
                 }
             }
         }
