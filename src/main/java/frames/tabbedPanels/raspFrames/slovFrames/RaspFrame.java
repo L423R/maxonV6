@@ -1,10 +1,9 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.DiscEntity;
-import dao.GroupsEntity;
-import dao.PrepsEntity;
-import dao.RaspEntity;
-import models.MainModel;
+import entities.DiscEntity;
+import entities.GroupsEntity;
+import entities.PrepsEntity;
+import entities.RaspEntity;
 import org.jdesktop.swingx.table.DatePickerCellEditor;
 import utils.ButtonsMenu;
 import utils.Cache;

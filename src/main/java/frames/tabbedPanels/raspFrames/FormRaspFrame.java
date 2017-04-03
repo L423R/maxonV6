@@ -1,7 +1,7 @@
 package frames.tabbedPanels.raspFrames;
 
 import controllers.RaspController;
-import dao.*;
+import entities.*;
 import frames.tabbedPanels.raspFrames.slovFrames.RaspFrame;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

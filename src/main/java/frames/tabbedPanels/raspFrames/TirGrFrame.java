@@ -1,10 +1,9 @@
 package frames.tabbedPanels.raspFrames;
 
-import dao.DiscEntity;
-import dao.GroupsEntity;
-import dao.RaspEntity;
+import entities.DiscEntity;
+import entities.GroupsEntity;
+import entities.RaspEntity;
 import frames.tabbedPanels.raspFrames.slovFrames.RaspTirFrame;
-import models.MainModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jdesktop.swingx.JXDatePicker;

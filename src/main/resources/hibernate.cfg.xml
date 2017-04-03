@@ -17,18 +17,18 @@
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
-    <mapping class="dao.DateSemEntity"/>
-    <mapping class="dao.DiscEntity"/>
-    <mapping class="dao.KafEntity"/>
-    <mapping class="dao.NapravlEntity"/>
-    <mapping class="dao.ProgsEntity"/>
-    <mapping class="dao.MetodistsEntity"/>
-    <mapping class="dao.GroupsEntity"/>
-    <mapping class="dao.PrepsEntity"/>
-    <mapping class="dao.RaspEntity"/>
-    <mapping class="dao.NprEntity"/>
-    <mapping class="dao.StavkiEntity"/>
-    <mapping class="dao.NagrEntity"/>
+    <mapping class="entities.DateSemEntity"/>
+    <mapping class="entities.DiscEntity"/>
+    <mapping class="entities.KafEntity"/>
+    <mapping class="entities.NapravlEntity"/>
+    <mapping class="entities.ProgsEntity"/>
+    <mapping class="entities.MetodistsEntity"/>
+    <mapping class="entities.GroupsEntity"/>
+    <mapping class="entities.PrepsEntity"/>
+    <mapping class="entities.RaspEntity"/>
+    <mapping class="entities.NprEntity"/>
+    <mapping class="entities.StavkiEntity"/>
+    <mapping class="entities.NagrEntity"/>
 
 
   </session-factory>

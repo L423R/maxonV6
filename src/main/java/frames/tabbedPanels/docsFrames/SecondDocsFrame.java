@@ -93,6 +93,9 @@ public class SecondDocsFrame extends JFrame {
             JPanel panel1 = new JPanel(new GridLayout(2,1));
             panel1.add(new JLabel("Выберите преподавателя"));
             panel1.add(preps);
+            /*MatteBorder mb1 = new MatteBorder(1, 0, 1, 0, Color.YELLOW);
+            TitledBorder tb1 = new TitledBorder(mb1, "", TitledBorder.CENTER, TitledBorder.TOP);
+            panel1.setBorder(tb1);*/
 
 
             JPanel panel2 = new JPanel(new GridLayout(2,2));
@@ -102,6 +105,8 @@ public class SecondDocsFrame extends JFrame {
             panel2.add(prepPicker2);
             MatteBorder mb = new MatteBorder(1, 0, 0, 0, Color.BLUE);
             TitledBorder tb = new TitledBorder(mb, "Дата проведения", TitledBorder.CENTER, TitledBorder.TOP);
+            Font font = new Font("Verdana",Font.ITALIC,9);
+            tb.setTitleFont(font);
             panel2.setBorder(tb);
 
 
@@ -119,7 +124,9 @@ public class SecondDocsFrame extends JFrame {
             panel3.add(tf3);
             mb = new MatteBorder(1, 1, 1, 1, Color.RED);
             tb = new TitledBorder(mb, "Введите для преподавателя", TitledBorder.CENTER, TitledBorder.TOP);
+            tb.setTitleFont(font);
             panel3.setBorder(tb);
+
 
             add(panel1);
             add(panel2);

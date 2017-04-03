@@ -1,6 +1,6 @@
 package frames.tabbedPanels.prepFrames;
 
-import dao.PrepsEntity;
+import entities.PrepsEntity;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
 import utils.TableFactory;

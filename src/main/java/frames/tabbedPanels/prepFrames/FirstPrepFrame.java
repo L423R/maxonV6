@@ -1,6 +1,6 @@
 package frames.tabbedPanels.prepFrames;
 
-import dao.PrepsEntity;
+import entities.PrepsEntity;
 
 import javax.swing.*;
 import java.awt.*;

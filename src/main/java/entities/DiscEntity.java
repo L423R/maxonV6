@@ -1,4 +1,4 @@
-package dao;
+package entities;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -35,7 +35,7 @@ public class DiscEntity {
         this.наимДисц = наимДисц;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "КодКаф")
     public KafEntity getКодКаф() {
         if (кодКаф==null)

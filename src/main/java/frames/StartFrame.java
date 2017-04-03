@@ -1,6 +1,7 @@
 package frames;
 import controllers.MainController;
 import org.jdesktop.swingx.JXDatePicker;
+import utils.DaoFactory;
 
 
 import javax.swing.*;
@@ -35,7 +36,7 @@ public class StartFrame extends JFrame {
         contentPane.setBackground(color1);
 
         JPanel selectSem = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        sems = new JComboBox(controller.getSems());
+        sems = new JComboBox(DaoFactory.getDaoFactory().getDateSemDao().getSems());
         selectSem.add(new JLabel("Выберите текущий семестр:"));
         selectSem.add(sems);
 

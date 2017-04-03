@@ -2,23 +2,12 @@ package frames.tabbedPanels;
 
 import controllers.MainController;
 import controllers.RaspController;
-import dao.*;
-import frames.tabbedPanels.raspFrames.CorrRaspFrame;
-import frames.tabbedPanels.raspFrames.FormRaspFrame;
-import frames.tabbedPanels.raspFrames.TirGrFrame;
-import frames.tabbedPanels.raspFrames.slovFrames.*;
-import models.MainModel;
 import models.RaspModel;
-import utils.Cache;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Maxon on 01.03.2017.

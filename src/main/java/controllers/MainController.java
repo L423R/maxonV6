@@ -1,6 +1,6 @@
 package controllers;
 
-import dao.DateSemEntity;
+import entities.DateSemEntity;
 import frames.MainFrame;
 import models.MainModel;
 import org.hibernate.Session;

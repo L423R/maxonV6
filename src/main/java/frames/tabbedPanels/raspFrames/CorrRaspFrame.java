@@ -1,8 +1,7 @@
 package frames.tabbedPanels.raspFrames;
 
-import dao.GroupsEntity;
+import entities.GroupsEntity;
 import frames.tabbedPanels.raspFrames.slovFrames.RaspFrame;
-import models.MainModel;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
 

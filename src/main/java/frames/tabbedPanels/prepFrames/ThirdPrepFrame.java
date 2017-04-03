@@ -1,6 +1,6 @@
 package frames.tabbedPanels.prepFrames;
 
-import dao.PrepsEntity;
+import entities.PrepsEntity;
 import utils.ButtonsMenu;
 import utils.Cache;
 import utils.SlovFactory;

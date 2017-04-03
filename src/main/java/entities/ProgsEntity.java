@@ -1,4 +1,4 @@
-package dao;
+package entities;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -28,7 +28,7 @@ public class ProgsEntity {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "napralv")
     public NapravlEntity getNapralv() {
         return napralv;

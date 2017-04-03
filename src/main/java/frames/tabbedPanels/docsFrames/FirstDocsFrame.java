@@ -1,8 +1,8 @@
 package frames.tabbedPanels.docsFrames;
 
 import controllers.DocsController;
-import dao.NagrEntity;
-import dao.PrepsEntity;
+import entities.NagrEntity;
+import entities.PrepsEntity;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
 import utils.TableFactory;

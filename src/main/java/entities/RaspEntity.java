@@ -1,8 +1,4 @@
-package dao;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+package entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

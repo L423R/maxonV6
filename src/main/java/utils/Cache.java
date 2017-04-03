@@ -1,6 +1,6 @@
 package utils;
 
-import dao.*;
+import entities.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

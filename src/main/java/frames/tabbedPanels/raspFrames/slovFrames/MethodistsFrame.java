@@ -1,10 +1,7 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.MetodistsEntity;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import entities.MetodistsEntity;
+import utils.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -18,7 +15,7 @@ public class MethodistsFrame {
         String[] head = {"Код","Фамилия","Имя","Отчество","Контакт"};
         int[] widths = {39,100,100,100,300};
         String text = "Введите/Откорректируйте методистов";
-        List<MetodistsEntity> list = Cache.getMetodistsEntityList();
+        List<MetodistsEntity> list = NewCache.getCache().getMetodistsEntities();
         TableFactory factory = new TableFactory(head,widths,list) {
             @Override
             public void fillMas() {

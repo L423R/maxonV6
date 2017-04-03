@@ -1,10 +1,7 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.NapravlEntity;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import entities.NapravlEntity;
+import utils.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -19,7 +16,7 @@ public class NapravlFrame {
         String[] head = {"Код","Наименование"};
         int[] widths = {39,150};
         String text = "Направления обучения";
-        List<NapravlEntity> list = Cache.getNapravlEntityList();
+        List<NapravlEntity> list = NewCache.getCache().getNapravlEntities();
         TableFactory factory = new TableFactory(head,widths,list) {
             @Override
             public void fillMas() {

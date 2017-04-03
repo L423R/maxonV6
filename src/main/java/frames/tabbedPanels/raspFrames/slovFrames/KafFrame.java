@@ -1,10 +1,7 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.KafEntity;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import entities.KafEntity;
+import utils.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -19,7 +16,7 @@ public class KafFrame {
         String[] head = {"Код","НаименованиеКафедры","Ранг"};
         int[] widths = {40,500,40};
         String text = "Введите/Откорректируйте наименования кафедр";
-        List<KafEntity> list = Cache.getKafEntityList();
+        List<KafEntity> list = NewCache.getCache().getKafEntities();
 
 
         TableFactory factory = new TableFactory(head,widths,list) {

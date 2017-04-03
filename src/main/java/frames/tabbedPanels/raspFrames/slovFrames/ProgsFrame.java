@@ -1,12 +1,8 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.NapravlEntity;
-import dao.ProgsEntity;
-import models.MainModel;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import entities.NapravlEntity;
+import entities.ProgsEntity;
+import utils.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -21,8 +17,8 @@ public class ProgsFrame {
         String[] head = {"Код", "Направление","Профиль","ФормаОбуч","Квалифик","Срок","Примечание"};
         int[] widths= {39,150,150,100,100,50,200};
         String text ="Введите/Откорректируйте  программы обучения";
-        List<ProgsEntity> list= Cache.getProgsEntityList();
-        final List<NapravlEntity> napravlEntities = Cache.getNapravlEntityList();
+        List<ProgsEntity> list= NewCache.getCache().getProgsEntities();
+        final List<NapravlEntity> napravlEntities = NewCache.getCache().getNapravlEntities();
 
         TableFactory factory = new TableFactory(head,widths,list) {
             @Override
@@ -40,16 +36,9 @@ public class ProgsFrame {
             }
         };
         final JTable table = factory.getTable();
-        ArrayList<String> list1 = new ArrayList<String>();
-        for (Object x: napravlEntities)
-        {
-            NapravlEntity napravlEntity = (NapravlEntity) x;
-            list1.add(napravlEntity.getНаимНапр());
-        }
 
-        Object[] objects = list1.toArray();
 
-        JComboBox comboBox = new JComboBox(objects);
+        JComboBox comboBox = new JComboBox(DaoFactory.getDaoFactory().getNapravlDao().getNapravlNames());
         final DefaultCellEditor editor = new DefaultCellEditor(comboBox);
         table.getColumnModel().getColumn(1).setCellEditor(editor);
 

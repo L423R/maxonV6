@@ -1,10 +1,9 @@
 package models;
 
-import dao.*;
+import entities.*;
 
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Maxon on 21.02.2017.

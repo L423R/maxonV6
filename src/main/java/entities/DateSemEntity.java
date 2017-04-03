@@ -1,4 +1,4 @@
-package dao;
+package entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Maxon on 15.02.2017.
  */
 @Entity
-@Table(name = "date_sem", schema = "maxdip", catalog = "")
+@Table(name = "date_sem", schema = "maxdip")
 public class DateSemEntity {
     private int кодСем;
     private String наимСем;

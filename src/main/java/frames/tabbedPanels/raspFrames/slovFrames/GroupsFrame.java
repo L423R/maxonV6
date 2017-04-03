@@ -1,9 +1,8 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.GroupsEntity;
-import dao.MetodistsEntity;
-import dao.ProgsEntity;
-import models.MainModel;
+import entities.GroupsEntity;
+import entities.MetodistsEntity;
+import entities.ProgsEntity;
 import utils.*;
 
 import javax.swing.*;
@@ -22,9 +21,9 @@ public class GroupsFrame {
         int[] widths = {40,40,40,80,500,30,30,80,80,40,150};
         String text = "Введите/Откорректируйте сведения о группах";
 
-        final List<ProgsEntity> progsEntityList = Cache.getProgsEntityList();
-        final List<MetodistsEntity> metodistsEntityList = Cache.getMetodistsEntityList();
-        List<GroupsEntity> list = Cache.getGroupsEntityList();
+        final List<ProgsEntity> progsEntityList = NewCache.getCache().getProgsEntities();
+        final List<MetodistsEntity> metodistsEntityList = NewCache.getCache().getMetodistsEntities();
+        List<GroupsEntity> list = NewCache.getCache().getGroupsEntities();
 
         TableFactory factory = new TableFactory(head,widths,list) {
             @Override
@@ -51,33 +50,10 @@ public class GroupsFrame {
         };
 
         final JTable table = factory.getTable();
-       // DefaultTableModel model = (DefaultTableModel) table.getModel();
 
-        ArrayList<String> progName = new ArrayList<String>();
 
-        for (ProgsEntity progsEntity : progsEntityList)
-        {
-            String s = progsEntity.getПримеч();
-            if (s==null)
-                s= "";
-            String prog = progsEntity.getId()+" |"+progsEntity.getНаим()+" / "+progsEntity.getПрофПрогр()+" / "+progsEntity.getФормаОбуч()+"-"+
-                    progsEntity.getПланСрок()+"-"+progsEntity.getКвалифик()+" / "+ s;
-            progName.add(prog);
-        }
-
-        ArrayList<String> metodistName = new ArrayList<String>();
-
-        for (MetodistsEntity metodistsEntity : metodistsEntityList)
-        {
-            String s = metodistsEntity.getФамилия();
-            metodistName.add(s);
-        }
-
-        Object[] progOb = progName.toArray();
-        Object[] metodistOb = metodistName.toArray();
-
-        JComboBox comboBox1 = new JComboBox(progOb);
-        JComboBox comboBox2 = new JComboBox(metodistOb);
+        JComboBox comboBox1 = new JComboBox(DaoFactory.getDaoFactory().getProgDao().getProgNames());
+        JComboBox comboBox2 = new JComboBox(DaoFactory.getDaoFactory().getMetodistDao().getMetoDistNames());
 
         final DefaultCellEditor editor1 = new DefaultCellEditor(comboBox1);
         final DefaultCellEditor editor2 = new DefaultCellEditor(comboBox2);

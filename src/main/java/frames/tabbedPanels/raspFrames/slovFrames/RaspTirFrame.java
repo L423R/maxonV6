@@ -1,8 +1,7 @@
 package frames.tabbedPanels.raspFrames.slovFrames;
 
-import dao.GroupsEntity;
-import dao.RaspEntity;
-import models.MainModel;
+import entities.GroupsEntity;
+import entities.RaspEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;

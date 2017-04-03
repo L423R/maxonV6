@@ -79,14 +79,6 @@ public class MainFrame extends JFrame {
 
 
 
-        public class Panel32 extends JPanel{
-
-        }
-
-        public class Panel33 extends JPanel{
-
-        }
-
         public class Panel34 extends JPanel{
 
         }
