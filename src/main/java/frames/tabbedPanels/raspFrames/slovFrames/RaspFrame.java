@@ -5,10 +5,7 @@ import entities.GroupsEntity;
 import entities.PrepsEntity;
 import entities.RaspEntity;
 import org.jdesktop.swingx.table.DatePickerCellEditor;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import utils.*;
 
 import javax.swing.*;
 import java.sql.Timestamp;
@@ -27,7 +24,7 @@ public class RaspFrame {
         int[] widths = {100,50,25,80,80,300,120,80,80,40,120};
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d MMM yyyy");
         String text = "Расписание занятий группы на интервале с "+simpleDateFormat.format(date1)+" по "+simpleDateFormat.format(date2);
-        final List<DiscEntity> discEntityList = Cache.getDiscEntityList();
+        final List<DiscEntity> discEntityList = NewCache.getCache().getDiscEntities();
         final List<PrepsEntity> prepsEntityList = Cache.getPrepsEntityList();
         List<RaspEntity> raspEntityList = Cache.getRaspEntityList();
         List list = new ArrayList();

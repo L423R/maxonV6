@@ -91,7 +91,7 @@ public class KafEntity {
 
     private Collection<PrepsEntity> PrepsList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "кодКаф")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "кодКаф",fetch = FetchType.EAGER)
     public Collection<PrepsEntity> getPrepsList() {
         return PrepsList;
     }

@@ -16,6 +16,8 @@ public class DaoFactory {
     private static MethodistDao metodistDao = null;
     private static GroupDao groupDao = null;
     private static NapravlDao napravlDao = null;
+    private static PrepDao prepDao = null;
+    private static RaspDao raspDao = null;
 
     private DaoFactory() {
     }
@@ -67,4 +69,19 @@ public class DaoFactory {
             napravlDao = new NapravlDaoImpl();
         return napravlDao;
     }
+
+    public PrepDao getPrepDao(){
+        if (prepDao==null)
+            prepDao = new PrepDaoImpl();
+        return prepDao;
+    }
+
+    public RaspDao getRaspDao(){
+        if (raspDao==null)
+            raspDao = new RaspDaoImpl();
+        return raspDao;
+    }
+
+
+
 }

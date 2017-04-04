@@ -17,6 +17,7 @@ public class NewCache {
     private static List<MetodistsEntity> metodistsEntities = null;
     private static List<GroupsEntity> groupsEntities = null;
     private static List<NapravlEntity> napravlEntities = null;
+    private static List<PrepsEntity> prepsEntities = null;
 
     public static synchronized NewCache getCache() {
         if (cache==null)
@@ -60,4 +61,42 @@ public class NewCache {
             napravlEntities = DaoFactory.getDaoFactory().getNapravlDao().getList("from NapravlEntity");
         return napravlEntities;
     }
+
+    public List<PrepsEntity> getPrepsEntities(){
+        if (prepsEntities==null)
+            prepsEntities = DaoFactory.getDaoFactory().getPrepDao().getList("from PrepsEntity");
+        return prepsEntities;
+    }
+
+
+
+    public void CleanDisc(){
+        discEntities = null;
+    }
+
+    public void CleanKaf(){
+        kafEntities = null;
+    }
+
+    public void CleanProg(){
+        progsEntities = null;
+    }
+
+    public void CleanMetodist(){
+        metodistsEntities = null;
+    }
+
+    public void CleanGroup(){
+        groupsEntities = null;
+    }
+
+    public void CleanNapravl(){
+        napravlEntities = null;
+    }
+
+    public void CleanPrep(){
+        prepsEntities = null;
+    }
+
+
 }
