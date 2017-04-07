@@ -4,6 +4,7 @@ import entities.GroupsEntity;
 import entities.RaspEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import utils.DaoFactory;
 import utils.HibernateUtil;
 import utils.SlovFactory;
 import utils.TableFactory;
@@ -40,8 +41,8 @@ public class RaspTirFrame {
                 }
             }
         }*/
-        List list = new ArrayList();
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        List list = DaoFactory.getDaoFactory().getRaspDao().getCurrRaspForGr(date1,date2,groupsEntity);
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         try{
             Timestamp timestamp1 = new Timestamp(date1.getTime());
@@ -58,7 +59,7 @@ public class RaspTirFrame {
         } finally {
             // закрытие сессии
             session.close();
-        }
+        }*/
 
         TableFactory factory = new TableFactory(head,widhts,list) {
             @Override

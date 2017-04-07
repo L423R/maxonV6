@@ -3,6 +3,7 @@ package frames.tabbedPanels.prepFrames;
 import entities.PrepsEntity;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.NewCache;
 import utils.TableFactory;
 
 import javax.swing.*;
@@ -52,7 +53,7 @@ public class SecondPrepFrame extends JFrame {
             String[] head={" ФИО","АРХ"};
             int[] widths = {220,40};
 
-            List<PrepsEntity> prepsEntityList = Cache.getPrepsEntityList();
+            List<PrepsEntity> prepsEntityList = NewCache.getCache().getPrepsEntities();
             /*List<PrepsEntity> keks = new ArrayList();
             for (PrepsEntity prepsEntity:prepsEntityList){
                 if (prepsEntity.getNagrList().size()!=0)

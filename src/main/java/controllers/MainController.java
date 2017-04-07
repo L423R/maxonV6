@@ -40,7 +40,7 @@ public class MainController {
         return new Date(model.getEntity().getКонСем().getTime());
     }
 
-    public Object[] getSems()
+    /*public Object[] getSems()
     {
         ArrayList names = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -66,7 +66,7 @@ public class MainController {
             session.close();
         }
         return names.toArray();
-    }
+    }*/
 
 
     public void startMainFrame(Date date1, Date date2, int index) {
@@ -95,7 +95,7 @@ public class MainController {
         }
         System.out.println(entity.getНаимСем());
         //MainModel model = new MainModel(date1,date2,entity);
-        InitCache.init();
+       // InitCache.init();
         model = new MainModel(date1,date2,entity);
         MainFrame mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);

@@ -2,6 +2,7 @@ package frames.tabbedPanels;
 
 import controllers.DocsController;
 import frames.tabbedPanels.docsFrames.FirstDocsFrame;
+import models.DocsModel;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -15,8 +16,12 @@ import java.awt.event.ActionListener;
  */
 public class DocsPanel extends JPanel {
 
+    private DocsController docsController;
+
     public DocsPanel() {
 
+        DocsModel docsModel = new DocsModel();
+        docsController = new DocsController(docsModel);
         setPreferredSize(new Dimension(570,290));
 
         add(new FirstPanel());
@@ -52,21 +57,21 @@ public class DocsPanel extends JPanel {
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new FirstDocsFrame(new DocsController());
+                    docsController.showFirstFrame();
                 }
             });
 
             button2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    docsController.showSecondFrame();
                 }
             });
 
             button3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    docsController.showThirdFrame();
                 }
             });
 
@@ -107,6 +112,34 @@ public class DocsPanel extends JPanel {
             button3.setFont(font);
             button4.setFont(font);
 
+
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+            button2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    docsController.showNprFrame();
+                }
+            });
+
+            button3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+            button4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
 
 
 

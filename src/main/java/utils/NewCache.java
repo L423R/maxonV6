@@ -18,6 +18,7 @@ public class NewCache {
     private static List<GroupsEntity> groupsEntities = null;
     private static List<NapravlEntity> napravlEntities = null;
     private static List<PrepsEntity> prepsEntities = null;
+    private static List<NprEntity> nprEntities = null;
 
     public static synchronized NewCache getCache() {
         if (cache==null)
@@ -68,6 +69,12 @@ public class NewCache {
         return prepsEntities;
     }
 
+    public List<NprEntity> getNprEntities(){
+        if (nprEntities==null)
+            nprEntities = DaoFactory.getDaoFactory().getNprDao().getList("from NprEntity");
+        return nprEntities;
+    }
+
 
 
     public void CleanDisc(){
@@ -96,6 +103,10 @@ public class NewCache {
 
     public void CleanPrep(){
         prepsEntities = null;
+    }
+
+    public void CleanNpr(){
+        nprEntities = null;
     }
 
 

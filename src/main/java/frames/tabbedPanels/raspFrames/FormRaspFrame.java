@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.DaoFactory;
 import utils.HibernateUtil;
+import utils.NewCache;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -106,10 +108,10 @@ public class FormRaspFrame extends JFrame {
             JLabel label2 = new JLabel("Выберите семестр:");
             final String[] mas2 = {"1","2","3","4","5","6","7","8","9","10","11","12"};
 
-            final List<ProgsEntity> progsEntityList = Cache.getProgsEntityList();
-            ArrayList<String> progName = new ArrayList<>();
+            final List<ProgsEntity> progsEntityList = NewCache.getCache().getProgsEntities();
+            Object[] progName = DaoFactory.getDaoFactory().getProgDao().getProgNames();
 
-            for (ProgsEntity progsEntity : progsEntityList)
+           /* for (ProgsEntity progsEntity : progsEntityList)
             {
                 String s = progsEntity.getПримеч();
                 if (s==null)
@@ -117,15 +119,15 @@ public class FormRaspFrame extends JFrame {
                 String prog = progsEntity.getId()+" |"+progsEntity.getНаим()+" / "+progsEntity.getПрофПрогр()+" / "+progsEntity.getФормаОбуч()+"-"+
                         progsEntity.getПланСрок()+"-"+progsEntity.getКвалифик()+" / "+ s;
                 progName.add(prog);
-            }
-            Object[] objects = progName.toArray();
+            }*/
+           // Object[] objects = progName.toArray();
 
 
 
 
 
 
-            final JComboBox comboBox1 = new JComboBox(objects);
+            final JComboBox comboBox1 = new JComboBox(progName);
             final JComboBox comboBox2 = new JComboBox(mas2);
             JButton button = new JButton("OK");
             button.addActionListener(new ActionListener() {
@@ -187,8 +189,8 @@ public class FormRaspFrame extends JFrame {
             setLayout(new FlowLayout(FlowLayout.LEFT));
             setBorder(BorderFactory.createLineBorder(Color.blue, 2));
 
-            Object[] groups = getNamesGroup(list);
-            final List<DiscEntity> discEntityList = Cache.getDiscEntityList();
+            Object[] groups = DaoFactory.getDaoFactory().getGroupDao().getNamesGr(list);
+            final List<DiscEntity> discEntityList = NewCache.getCache().getDiscEntities();
             ArrayList<String> nameList = new ArrayList<String>();
             for (DiscEntity entity:discEntityList)
             {
@@ -287,7 +289,7 @@ public class FormRaspFrame extends JFrame {
 
         }
 
-        public Object[] getNamesGroup(ArrayList<GroupsEntity> list)
+        /*public Object[] getNamesGroup(ArrayList<GroupsEntity> list)
         {
             ArrayList namesGroup = new ArrayList();
             for (GroupsEntity entity : list) {
@@ -304,7 +306,7 @@ public class FormRaspFrame extends JFrame {
             }
 
             return namesGroup.toArray();
-        }
+        }*/
 
         public Object[] getNamesPreps(KafEntity kafEntity){
             ArrayList<String> prepsNames = new ArrayList<String>();
@@ -452,7 +454,7 @@ public class FormRaspFrame extends JFrame {
                 button.setPreferredSize(new Dimension(90,70));
                 button.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        Session session = HibernateUtil.getSessionFactory().openSession();
+                        /*Session session = HibernateUtil.getSessionFactory().openSession();
                         Transaction transaction = session.beginTransaction();
                         try{
                             // Object o = entities.get(selectedRow);
@@ -468,7 +470,9 @@ public class FormRaspFrame extends JFrame {
                         }finally {
                             // закрытие сессии
                             session.close();
-                        }
+                        }*/
+
+                        DaoFactory.getDaoFactory().getRaspDao().saveOrUpdate(entity);
                     }
                 });
                 add(button);

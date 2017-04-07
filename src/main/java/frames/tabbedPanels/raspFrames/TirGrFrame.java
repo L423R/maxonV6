@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.DaoFactory;
 import utils.HibernateUtil;
 
 import javax.swing.*;
@@ -30,14 +31,14 @@ public class TirGrFrame extends JFrame {
     private JXDatePicker picker2;
     private GroupsPanel groupsPanel;
     private JPanel buttonsPanel;
-    private List<GroupsEntity> groupsEntities;
+   // private List<GroupsEntity> groupsEntities;
     private GroupsEntity originGroup;
     private GroupsEntity cloneGroup;
 
 
     public TirGrFrame() throws HeadlessException {
 
-        groupsEntities = Cache.getGroupsEntityList();
+        //groupsEntities = Cache.getGroupsEntityList();
       //  raspEntities = this.mainModel.getRaspEntityList();
 
         Font font = new Font("Verdana",Font.BOLD,18);
@@ -67,7 +68,7 @@ public class TirGrFrame extends JFrame {
             button.addActionListener(e -> {
                 if (groupsPanel!=null)
                     TirGrFrame.this.remove(groupsPanel);
-                groupsPanel = new GroupsPanel(getCurrGroupList());
+                groupsPanel = new GroupsPanel(DaoFactory.getDaoFactory().getGroupDao().getOpenGr(picker1.getDate(),picker2.getDate()));
                 TirGrFrame.this.add(groupsPanel);
                 revalidate();
                 repaint();
@@ -81,7 +82,7 @@ public class TirGrFrame extends JFrame {
 
         }
 
-        private List<GroupsEntity> getCurrGroupList()
+        /*private List<GroupsEntity> getCurrGroupList()
         {
             List<GroupsEntity> list = new ArrayList<GroupsEntity>();
             for (GroupsEntity entity: groupsEntities)
@@ -94,7 +95,7 @@ public class TirGrFrame extends JFrame {
                 }
             }
             return list;
-        }
+        }*/
     }
 
     public class GroupsPanel extends JPanel
@@ -167,7 +168,7 @@ public class TirGrFrame extends JFrame {
                         //panel2.setPreferredSize(new Dimension(400,70));
                         panel2.add(label2);
                        // cloneGroup = GroupsPanel.this.groupsEntityList.get(comboBox1.getSelectedIndex());
-                        final List<GroupsEntity> currGroupList2 = getCurrGroupList2(originGroup);
+                        final List<GroupsEntity> currGroupList2 = DaoFactory.getDaoFactory().getGroupDao().getOpenGrClone(picker1.getDate(),picker2.getDate(),originGroup);
                         List kek = new ArrayList();
                         for (GroupsEntity entity: currGroupList2)
                             kek.add(entity.getCurrName());
@@ -208,7 +209,7 @@ public class TirGrFrame extends JFrame {
 
         }
 
-        private List<GroupsEntity> getCurrGroupList2(GroupsEntity groupsEntity)
+        /*private List<GroupsEntity> getCurrGroupList2(GroupsEntity groupsEntity)
         {
             List<GroupsEntity> list = new ArrayList<GroupsEntity>();
             for (GroupsEntity entity: groupsEntities)
@@ -221,7 +222,7 @@ public class TirGrFrame extends JFrame {
                 }
             }
             return list;
-        }
+        }*/
 
     }
 

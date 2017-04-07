@@ -4,6 +4,8 @@ import entities.GroupsEntity;
 import frames.tabbedPanels.raspFrames.slovFrames.RaspFrame;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.DaoFactory;
+import utils.NewCache;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -21,12 +23,12 @@ public class CorrRaspFrame extends JFrame {
     private List<GroupsEntity> groupsEntityList;
     private JXDatePicker picker1;
     private JXDatePicker picker2;
-    private ArrayList<GroupsEntity> currList = new ArrayList();
+    //private ArrayList<GroupsEntity> currList = new ArrayList();
     private InterPanel interPanel;
     private GroupPanel groupPanel;
     public CorrRaspFrame() throws HeadlessException {
 
-        groupsEntityList = Cache.getGroupsEntityList();
+       // groupsEntityList = DaoFactory.getDaoFactory().getGroupDao().getOpenGr(picker1.getDate(),picker2.getDate());
         interPanel = new InterPanel();
         Font font = new Font("Verdana",Font.BOLD,18);
         JLabel title = new JLabel("Просмотр/Коррекция расписания занятий группы");
@@ -86,13 +88,13 @@ public class CorrRaspFrame extends JFrame {
         public GroupPanel() {
             setPreferredSize(new Dimension(400,60));
             setLayout(new FlowLayout());
-
+            groupsEntityList = DaoFactory.getDaoFactory().getGroupDao().getOpenGr(picker1.getDate(),picker2.getDate());
             JLabel label = new JLabel("Группа:");
-            final JComboBox comboBox = new JComboBox(getNamesGroup(groupsEntityList));
+            final JComboBox comboBox = new JComboBox(DaoFactory.getDaoFactory().getGroupDao().getNamesGr(groupsEntityList));
             JButton button = new JButton("Расписание");
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    RaspFrame raspFrame = new RaspFrame(picker1.getDate(),picker2.getDate(), currList.get(comboBox.getSelectedIndex()));
+                    RaspFrame raspFrame = new RaspFrame(picker1.getDate(),picker2.getDate(), groupsEntityList.get(comboBox.getSelectedIndex()));
                 }
             });
             add(label);
@@ -100,7 +102,7 @@ public class CorrRaspFrame extends JFrame {
             add(button);
         }
 
-        public Object[] getNamesGroup(List<GroupsEntity> list)
+        /*public Object[] getNamesGroup(List<GroupsEntity> list)
         {
             ArrayList namesGroup = new ArrayList();
             for (GroupsEntity entity : list) {
@@ -113,7 +115,7 @@ public class CorrRaspFrame extends JFrame {
             }
 
             return namesGroup.toArray();
-        }
+        }*/
 
 
     }

@@ -1,10 +1,7 @@
 package frames.tabbedPanels.prepFrames;
 
 import entities.PrepsEntity;
-import utils.ButtonsMenu;
-import utils.Cache;
-import utils.SlovFactory;
-import utils.TableFactory;
+import utils.*;
 
 import javax.swing.*;
 import java.util.*;
@@ -19,7 +16,7 @@ public class ThirdPrepFrame {
         String[] head = {"ид","Арх","Фамилия","Имя","Отчество","ДатаРож","Индекс","Адресс","Телефон"};
         String text = "Список преподавателей (АРХИВ)";
         int[] widths = {40,40,150,100,150,80,100,120,100};
-        List<PrepsEntity> list = Cache.getPrepsEntityList();
+        List<PrepsEntity> list = NewCache.getCache().getPrepsEntities();
         List<PrepsEntity> prepsEntityList = new ArrayList<>();
         for (PrepsEntity entity: list)
         {

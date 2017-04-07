@@ -5,6 +5,7 @@ import entities.NagrEntity;
 import entities.PrepsEntity;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.NewCache;
 import utils.TableFactory;
 
 import javax.swing.*;
@@ -93,7 +94,7 @@ public class FirstDocsFrame extends JFrame {
             String[] head={" ФИО","ФДО","Внеш"};
             int[] widths = {220,40,50};
 
-            List<PrepsEntity> prepsEntityList = Cache.getPrepsEntityList();
+            List<PrepsEntity> prepsEntityList = NewCache.getCache().getPrepsEntities();
             List<PrepsEntity> keks = new ArrayList();
             for (PrepsEntity prepsEntity:prepsEntityList){
                 if (prepsEntity.getNagrList().size()!=0)

@@ -18,6 +18,7 @@ public class DaoFactory {
     private static NapravlDao napravlDao = null;
     private static PrepDao prepDao = null;
     private static RaspDao raspDao = null;
+    private static NprDao nprDao = null;
 
     private DaoFactory() {
     }
@@ -82,6 +83,10 @@ public class DaoFactory {
         return raspDao;
     }
 
-
+    public NprDao getNprDao(){
+        if (nprDao==null)
+            nprDao = new NprDaoImpl();
+        return nprDao;
+    }
 
 }

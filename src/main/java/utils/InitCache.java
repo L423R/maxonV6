@@ -6,9 +6,9 @@ package utils;
 public class InitCache {
 
 
-    public static void init()
+   /* public static void init()
     {
         Cache.load();
-    }
+    }*/
 
 }

@@ -25,11 +25,11 @@ public class RaspFrame {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d MMM yyyy");
         String text = "Расписание занятий группы на интервале с "+simpleDateFormat.format(date1)+" по "+simpleDateFormat.format(date2);
         final List<DiscEntity> discEntityList = NewCache.getCache().getDiscEntities();
-        final List<PrepsEntity> prepsEntityList = Cache.getPrepsEntityList();
-        List<RaspEntity> raspEntityList = Cache.getRaspEntityList();
-        List list = new ArrayList();
+        final List<PrepsEntity> prepsEntityList = NewCache.getCache().getPrepsEntities();
+        List<RaspEntity> raspEntityList = DaoFactory.getDaoFactory().getRaspDao().getCurrRaspForGr(date1,date2,groupsEntity);
+        //List list = new ArrayList();
 
-        for (RaspEntity entity:raspEntityList)
+        /*for (RaspEntity entity:raspEntityList)
         {
             Timestamp timestamp1 = entity.getДатаЗан();
             if (timestamp1!=null) {
@@ -40,9 +40,9 @@ public class RaspFrame {
                 list.add(entity);
                 }
             }
-        }
+        }*/
 
-        TableFactory factory = new TableFactory(head,widths,list) {
+        TableFactory factory = new TableFactory(head,widths,raspEntityList) {
             @Override
             public void fillMas() {
                 for (int i = 0; i < mas.length; i++) {
