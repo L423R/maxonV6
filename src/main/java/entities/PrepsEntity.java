@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by Maxon on 06.03.2017.
  */
 @Entity
-@Table(name = "preps", schema = "maxdip", catalog = "")
+@Table(name = "preps", schema = "maxdip")
 public class PrepsEntity {
     private Boolean прАрх;
     private NprEntity кодНпр;
@@ -456,10 +456,7 @@ public class PrepsEntity {
 
     @Override
     public String toString() {
-        return "PrepsEntity{" +
-                "фамилия='" + фамилия + '\'' +
-                ", имя='" + имя + '\'' +
-                '}';
+        return фамилия+" "+имя+" "+отчество;
     }
 
     @OneToMany(mappedBy = "кодПреп",orphanRemoval = true)

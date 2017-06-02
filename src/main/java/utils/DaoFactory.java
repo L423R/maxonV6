@@ -19,6 +19,9 @@ public class DaoFactory {
     private static PrepDao prepDao = null;
     private static RaspDao raspDao = null;
     private static NprDao nprDao = null;
+    private static NagrRabDao nagrRabDao = null;
+    private static GodDao godDao = null;
+    private static StavkiDao stavkiDao = null;
 
     private DaoFactory() {
     }
@@ -89,4 +92,21 @@ public class DaoFactory {
         return nprDao;
     }
 
+    public NagrRabDao getNagrRabDao(){
+        if(nagrRabDao==null)
+            nagrRabDao = new NagrRabDaoImpl();
+        return nagrRabDao;
+    }
+
+    public GodDao getGodDao(){
+        if (godDao==null)
+            godDao = new GodDaoImpl();
+        return godDao;
+    }
+
+    public StavkiDao getStavkiDao(){
+        if (stavkiDao==null)
+            stavkiDao = new StavkiDaoImpl();
+        return stavkiDao;
+    }
 }

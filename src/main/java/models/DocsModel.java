@@ -3,7 +3,7 @@ package models;
 import frames.tabbedPanels.docsFrames.FirstDocsFrame;
 import frames.tabbedPanels.docsFrames.SecondDocsFrame;
 import frames.tabbedPanels.docsFrames.ThirdDocsFrame;
-import frames.tabbedPanels.docsFrames.slovFrames.NprFrame;
+import frames.tabbedPanels.docsFrames.slovFrames.*;
 
 /**
  * Created by Maxon on 07.04.2017.
@@ -15,6 +15,10 @@ public class DocsModel {
     private ThirdDocsFrame thirdDocsFrame;
 
     private NprFrame nprFrame;
+    private NagrRabFrame nagrRabFrame;
+    private GodFrame godFrame;
+    private StavkFrame stavkFrame;
+    private StavksFrame stavksFrame;
 
     public FirstDocsFrame getFirstDocsFrame() {
         return firstDocsFrame;
@@ -46,5 +50,37 @@ public class DocsModel {
 
     public void setNprFrame(NprFrame nprFrame) {
         this.nprFrame = nprFrame;
+    }
+
+    public NagrRabFrame getNagrRabFrame() {
+        return nagrRabFrame;
+    }
+
+    public void setNagrRabFrame(NagrRabFrame nagrRabFrame) {
+        this.nagrRabFrame = nagrRabFrame;
+    }
+
+    public GodFrame getGodFrame() {
+        return godFrame;
+    }
+
+    public void setGodFrame(GodFrame godFrame) {
+        this.godFrame = godFrame;
+    }
+
+    public StavkFrame getStavkFrame() {
+        return stavkFrame;
+    }
+
+    public void setStavkFrame(StavkFrame stavkFrame) {
+        this.stavkFrame = stavkFrame;
+    }
+
+    public StavksFrame getStavksFrame() {
+        return stavksFrame;
+    }
+
+    public void setStavksFrame(StavksFrame stavksFrame) {
+        this.stavksFrame = stavksFrame;
     }
 }

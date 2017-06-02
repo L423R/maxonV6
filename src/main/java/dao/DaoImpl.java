@@ -14,12 +14,12 @@ public class DaoImpl implements Dao {
 
 
     @Override
-    public Object getById(Object entity, int id) {
+    public Object getById(Class clazz, int id) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            Object object = session.load(Object.class, id);
+            Object object = session.get(clazz, id);
             session.getTransaction().commit();
             return object;
 

@@ -40,7 +40,7 @@ public class FirstDocsFrame extends JFrame {
         this.controller = controller;
 
         Font font = new Font("Verdana",Font.BOLD,18);
-        JLabel title = new JLabel("Формирование дополнительных соглашений по Расписанию");
+        JLabel title = new JLabel("Учебно-методическое сопровождение аудиторных занятий");
         title.setFont(font);
         setBounds(500,0,850,550);
         Container contentPane = getContentPane();
@@ -225,6 +225,14 @@ public class FirstDocsFrame extends JFrame {
                 add(nagrPanel);
             }
 
+            JButton button1 = new JButton("Формирование доп соглашений");
+            JButton button2 = new JButton("<html><body><font color=red> Сформировать Акт </font> </body></html>");
+
+            button1.setPreferredSize(new Dimension(200,30));
+            button2.setPreferredSize(new Dimension(200,30));
+
+            add(button1);
+            add(button2);
             revalidate();
             repaint();
         }

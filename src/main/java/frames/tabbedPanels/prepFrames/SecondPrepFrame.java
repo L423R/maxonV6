@@ -1,8 +1,10 @@
 package frames.tabbedPanels.prepFrames;
 
+import dao.PrepDao;
 import entities.PrepsEntity;
 import org.jdesktop.swingx.JXDatePicker;
 import utils.Cache;
+import utils.DaoFactory;
 import utils.NewCache;
 import utils.TableFactory;
 
@@ -15,6 +17,7 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -24,10 +27,25 @@ public class SecondPrepFrame extends JFrame {
     private JTable table;
     private Tpanel tpanel;
     private InfoPanel infoPanel;
+    private Object[] zvanMas;
+    private Object[] stepMas;
+    private Object[] doljnMas;
+    private Object[] doljnFdoMas;
+    private Object[] kafNames;
+    private Object[] nprNames;
     public SecondPrepFrame() throws HeadlessException {
 
+        PrepDao dao = DaoFactory.getDaoFactory().getPrepDao();
+
+        zvanMas = dao.getZvanMas();
+        stepMas = dao.getStepMas();
+        doljnMas = dao.getDoljnMas();
+        doljnFdoMas = dao.getDoljnFdoMas();
+        kafNames = DaoFactory.getDaoFactory().getKafDao().getKafNames();
+        nprNames = DaoFactory.getDaoFactory().getNprDao().getNamesNpr();
+
         Font font = new Font("Verdana",Font.BOLD,18);
-        JLabel title = new JLabel("Просмотр/Коррекция расписания занятий группы");
+        JLabel title = new JLabel("Ввод/Коррекция показателей преподавателей");
         title.setPreferredSize(new Dimension(700,60));
         title.setFont(font);
         setBounds(350,0,900,710);
@@ -35,7 +53,7 @@ public class SecondPrepFrame extends JFrame {
         contentPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         tpanel = new Tpanel();
-        infoPanel = new InfoPanel();
+        //infoPanel = new InfoPanel();
 
 
 
@@ -43,7 +61,7 @@ public class SecondPrepFrame extends JFrame {
 
         contentPane.add(title);
         contentPane.add(tpanel);
-        contentPane.add(infoPanel);
+       // contentPane.add(infoPanel);
         setVisible(true);
     }
 
@@ -86,7 +104,7 @@ public class SecondPrepFrame extends JFrame {
             table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
-
+                    getInfoSR(table,prepsEntityList);
                 }
             });
             JScrollPane tableContainer = new JScrollPane(table);
@@ -96,20 +114,48 @@ public class SecondPrepFrame extends JFrame {
             add(tableContainer);
             System.out.println(sum+13);
         }
+
+        private void getInfoSR(JTable table, List<PrepsEntity> list){
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow>-1) {
+                PrepsEntity entity = list.get(selectedRow);
+                String fio = (String) table.getValueAt(selectedRow, 0);
+                System.out.println(fio + " " + entity.getId());
+                System.out.println(entity.getОтчество());
+                if (infoPanel!= null)
+                {
+
+                    SecondPrepFrame.this.getContentPane().remove(infoPanel);
+
+                }
+                infoPanel = new InfoPanel(entity);
+                SecondPrepFrame.this.getContentPane().add(infoPanel);
+                revalidate();
+                repaint();
+            }
+        }
+
     }
 
     public class InfoPanel extends JPanel{
-        FirstInfo firstInfo = new FirstInfo();
-        SecondInfo secondInfo = new SecondInfo();
+        PrepsEntity entity;
+        FirstInfo firstInfo = null;
+        SecondInfo secondInfo = null;
         TabbedPanel tabbedPanel = new TabbedPanel();
 
-        public InfoPanel() {
+        public InfoPanel(PrepsEntity entity) {
+            this.entity = entity;
             setPreferredSize(new Dimension(530,700));
             setLayout(new FlowLayout(FlowLayout.CENTER));
 
+            firstInfo = new FirstInfo();
+            secondInfo = new SecondInfo();
+
             add(firstInfo);
             add(secondInfo);
-            add(tabbedPanel);
+           // add(tabbedPanel);
+            JButton save = new JButton("Сохранить");
+            add(save);
 
 
         }
@@ -118,15 +164,15 @@ public class SecondPrepFrame extends JFrame {
 
             public FirstInfo() {
 
-                setPreferredSize(new Dimension(550,155));
+                setPreferredSize(new Dimension(550,130));
                 setLayout(new FlowLayout(FlowLayout.CENTER));
 
                 JPanel panel1 = new JPanel(new GridLayout(3,1));
                 panel1.setBorder(BorderFactory.createLineBorder(Color.red, 1));
                 panel1.setPreferredSize(new Dimension(100,125));
-                JLabel secondName = new JLabel(" Ivanov");
-                JLabel firstName = new JLabel(" Ivan");
-                JLabel thirdName = new JLabel(" Ivanovich");
+                JLabel secondName = new JLabel(" "+entity.getФамилия());
+                JLabel firstName = new JLabel(" "+entity.getИмя());
+                JLabel thirdName = new JLabel(" "+entity.getОтчество());
                 panel1.add(secondName);
                 panel1.add(firstName);
                 panel1.add(thirdName);
@@ -141,8 +187,10 @@ public class SecondPrepFrame extends JFrame {
                 panel2.setPreferredSize(new Dimension(170,50));
                 JLabel phone1 = new JLabel("Тел:");
                 JLabel mail = new JLabel("mail:");
-                JTextField textPhone1 = new JTextField(20);
-                JTextField textMail = new JTextField(20);
+                JTextField textPhone1 = new JTextField(25);
+                textPhone1.setText(entity.getТелефон());
+                JTextField textMail = new JTextField(25);
+                textMail.setText(entity.getПочта());
                 panel2.add(phone1);panel2.add(textPhone1);
                 panel2.add(mail);panel2.add(textMail);
 
@@ -153,13 +201,21 @@ public class SecondPrepFrame extends JFrame {
                 panel3.setPreferredSize(new Dimension(370,125));
                 JLabel doc = new JLabel("Договор");
                 JTextField textDoc = new JTextField(10);
+                textDoc.setText(entity.getДоговорНомер());
                 JLabel ot = new JLabel("от: ");
                 JTextField dateDoc = new JTextField(10);
+                Timestamp date2 = entity.getДоговорДата();
+                if (date2!=null)
+                dateDoc.setText(date2.toString());
 
                 JLabel doc1 = new JLabel("Договор");
                 JTextField textDoc1 = new JTextField(10);
+                textDoc1.setText(entity.getДогФдоНомер());
                 JLabel ot1 = new JLabel("от: ");
                 JTextField dateDoc1 = new JTextField(10);
+                Timestamp date1 = entity.getДогФдоДата();
+                if (date1!=null)
+                dateDoc1.setText(date1.toString());
 
 
                 JButton button = new JButton("ok");
@@ -197,13 +253,13 @@ public class SecondPrepFrame extends JFrame {
             String[] str5 = {"ведущий программист","начальник отделения"};
             String[] str6 = {"информационного,предпринимательского и трудового права","доцент","профессор"};
 
-            JComboBox step = new JComboBox(str1);
-            JComboBox zvan = new JComboBox(str2);
-            JComboBox npr = new JComboBox(str3);
-            JComboBox vnesh = new JComboBox(str4);
-            JComboBox fdo = new JComboBox(str5);
-            JComboBox kaf = new JComboBox(str6);
-            JTextField tf = new JTextField("65");
+            JComboBox step = new JComboBox(stepMas);
+            JComboBox zvan = new JComboBox(zvanMas);
+            JComboBox npr = new JComboBox(nprNames);
+            JComboBox vnesh = new JComboBox(doljnMas);
+            JComboBox fdo = new JComboBox(doljnFdoMas);
+            JComboBox kaf = new JComboBox(kafNames);
+            //JTextField tf = new JTextField("65");
             public SecondInfo() {
 
                 setPreferredSize(new Dimension(550,190));
@@ -221,14 +277,17 @@ public class SecondPrepFrame extends JFrame {
                     panel1.setPreferredSize(new Dimension(235,50));
                     panel1.add(new JLabel("Ученая степень:"));
                     panel1.add(step);
+                    step.setSelectedItem(entity.getНаимСтеп());
                     panel1.add(new JLabel("Ученое звание:"));
                     panel1.add(zvan);
+                    zvan.setSelectedItem(entity.getНаимЗван());
 
                     JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
                     panel2.setPreferredSize(new Dimension(285,50));
                     panel2.setBorder(BorderFactory.createLineBorder(Color.blue, 1));
                     panel2.add(new JLabel("Квалификация НПР:"));
                     panel2.add(npr);
+                    npr.setSelectedItem(entity.getКодНпр().getНаимНпр());
                     add(panel1);
                     add(panel2);
 
@@ -243,15 +302,18 @@ public class SecondPrepFrame extends JFrame {
                     panel1.setPreferredSize(new Dimension(520,30));
                     panel1.add(new JLabel("Должность:"));
                     panel1.add(vnesh);
+                    vnesh.setSelectedItem(entity.getДолжн());
                     panel1.add(new JLabel("Сотр.ФДО:"));
                     panel1.add(fdo);
+                    fdo.setSelectedItem(entity.getДолжнФдо());
 
                     JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
                     panel2.setPreferredSize(new Dimension(520,35));
                     panel2.add(new JLabel("Кафедра:"));
                     panel2.add(kaf);
-                    panel2.add(new JLabel("№"));
-                    panel2.add(tf);
+                    kaf.setSelectedItem(entity.getКодКаф().getНаимКаф());
+                   // panel2.add(new JLabel("№"));
+                  //  panel2.add(tf);
 
                     add(panel1);
                     add(panel2);
@@ -272,18 +334,16 @@ public class SecondPrepFrame extends JFrame {
 
 
                     JCheckBox checkBoxFDO = new JCheckBox("Сотрудник ФДО");
-
-
+                    checkBoxFDO.setSelected(entity.getПрФдо());
                     JCheckBox checkBoxVO = new JCheckBox("Внеш. орган.");
-
+                    checkBoxVO.setSelected(entity.getПрВнеш());
 
                     JTextField textField1 = new JTextField(20);
-
-
+                    textField1.setText(entity.getНаимВнеш());
                     JTextField textField2 = new JTextField(5);
-
-
+                    textField2.setText(String.valueOf(entity.getСтавкаВнешМ()));
                     JTextField textField3 = new JTextField(5);
+                    textField3.setText(String.valueOf(entity.getСтавкаВнешБ()));
 
                     add(checkBoxFDO);
                     add(new JLabel("Наименование"));

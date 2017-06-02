@@ -10,7 +10,7 @@ public class StavkiEntity {
     private String наимСтав;
     private String едИзм;
     private Integer кодВида;
-    private Integer кодНпр;
+    private NprEntity кодНпр;
     private Integer ставкаСпец;
     private Integer ставкаМаг;
     private String примеч;
@@ -55,13 +55,13 @@ public class StavkiEntity {
         this.кодВида = кодВида;
     }
 
-    @Basic
-    @Column(name = "КодНПР", nullable = true)
-    public Integer getКодНпр() {
+    @ManyToOne
+    @JoinColumn(name = "КодНПР")
+    public NprEntity getКодНпр() {
         return кодНпр;
     }
 
-    public void setКодНпр(Integer кодНпр) {
+    public void setКодНпр(NprEntity кодНпр) {
         this.кодНпр = кодНпр;
     }
 

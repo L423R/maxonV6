@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Maxon on 23.02.2017.
  */
 @Entity
-@Table(name = "disc", schema = "maxdip", catalog = "")
+@Table(name = "disc", schema = "maxdip")
 public class DiscEntity {
     private int id;
     private String наимДисц;

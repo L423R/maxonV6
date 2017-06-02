@@ -32,7 +32,7 @@ public class GroupsFrame {
                     GroupsEntity entity = (GroupsEntity) list.get(i);
                     mas[i][0] = entity.getId();
                     String ss = "kek";
-                    mas[i][1] = ss;
+                    mas[i][1] = entity.getCurrName();
                     mas[i][2] = entity.getСокрНг();
                     mas[i][3] = entity.getДатаОткр();
                     ProgsEntity progsEntity = entity.getКодПрогр();

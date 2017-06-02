@@ -2,6 +2,7 @@ package frames;
 
 import controllers.MainController;
 import frames.tabbedPanels.DocsPanel;
+import frames.tabbedPanels.OtchetPanel;
 import frames.tabbedPanels.PrepPanel;
 import frames.tabbedPanels.RaspPanel;
 import models.MainModel;
@@ -72,16 +73,13 @@ public class MainFrame extends JFrame {
             tabbedPane.addTab("Расписание",new RaspPanel(controller));
             tabbedPane.addTab("Преподаватели",new PrepPanel(controller));
             tabbedPane.addTab("Документы оплаты",new DocsPanel());
-            tabbedPane.addTab("Сводки и отчеты",new Panel34());
+            tabbedPane.addTab("Сводки и отчеты",new OtchetPanel());
             add(tabbedPane);
 
         }
 
 
 
-        public class Panel34 extends JPanel{
-
-        }
     }
 
 }

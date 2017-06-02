@@ -19,6 +19,8 @@ public class NewCache {
     private static List<NapravlEntity> napravlEntities = null;
     private static List<PrepsEntity> prepsEntities = null;
     private static List<NprEntity> nprEntities = null;
+    private static List<NagrRabEntity> nagrRabEntities = null;
+    private static List<StavkiEntity> stavkiEntities = null;
 
     public static synchronized NewCache getCache() {
         if (cache==null)
@@ -75,6 +77,18 @@ public class NewCache {
         return nprEntities;
     }
 
+    public List<NagrRabEntity> getNagrRabEntities(){
+        if (nagrRabEntities==null)
+            nagrRabEntities = DaoFactory.getDaoFactory().getNagrRabDao().getList("from NagrRabEntity");
+        return nagrRabEntities;
+    }
+
+    public List<StavkiEntity> getStavkiEntities(){
+        if (stavkiEntities==null)
+            stavkiEntities = DaoFactory.getDaoFactory().getStavkiDao().getList("from StavkiEntity");
+        return stavkiEntities;
+    }
+
 
 
     public void CleanDisc(){
@@ -107,6 +121,14 @@ public class NewCache {
 
     public void CleanNpr(){
         nprEntities = null;
+    }
+
+    public void CleanNagrRab(){
+        nagrRabEntities = null;
+    }
+
+    public void CleanStavki(){
+        stavkiEntities = null;
     }
 
 

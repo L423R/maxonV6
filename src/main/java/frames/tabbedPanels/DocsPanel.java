@@ -41,7 +41,7 @@ public class DocsPanel extends JPanel {
 
 
             JButton button1 = new JButton("Учебно-методическое сопровождение аудиторных занятий");
-            JButton button2 = new JButton("Проведение учебно-методических работ");
+            JButton button2 = new JButton("Формирование дополнительных соглашений");
             JButton button3 = new JButton("Закрепление Курсовых работ за преподавателями");
 
 
@@ -65,6 +65,7 @@ public class DocsPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     docsController.showSecondFrame();
+                    System.out.println("second");
                 }
             });
 
@@ -116,7 +117,7 @@ public class DocsPanel extends JPanel {
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    docsController.showNagrRabFrame();
                 }
             });
 
@@ -130,14 +131,14 @@ public class DocsPanel extends JPanel {
             button3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    docsController.showStavksFrame();
                 }
             });
 
             button4.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    docsController.showGodFrame();
                 }
             });
 

@@ -32,7 +32,7 @@ public class PrepPanel extends JPanel {
         public SlovPanel() {
             setPreferredSize(new Dimension(300,280));
             setLayout(new FlowLayout(FlowLayout.CENTER));
-            Dimension dimension = new Dimension(150,30);
+            Dimension dimension = new Dimension(250,40);
             Font font = new Font("Courier", Font.BOLD,10);
             MatteBorder mb = new MatteBorder(1, 0, 0, 0, Color.BLACK);
             TitledBorder tb = new TitledBorder(mb, "Преподаватели", TitledBorder.CENTER, TitledBorder.TOP);
@@ -40,10 +40,11 @@ public class PrepPanel extends JPanel {
 
 
             JButton button1 = new JButton("Ввод первичных данных");
-            JButton button2 = new JButton("<html>Ввод/Коррекция показателей<br>" +
+           /* JButton button2 = new JButton("<html>Ввод/Коррекция показателей<br>" +
                     "Закреплене дисциплин обучения<br>" +
                     "Сведения о нагрузке<br>" +
-                    "Печать документов оплаты услуг</html>");
+                    "Печать документов оплаты услуг</html>");*/
+            JButton button2 = new JButton("Ввод/Коррекция показателей преподавателей");
 
             String ss = "<html>Ввод/Коррекция показателей<br>" +
                     "Закреплене дисциплин обучения<br>" +
@@ -52,9 +53,9 @@ public class PrepPanel extends JPanel {
             JButton button3 = new JButton("Работа с АРХИВОМ");
 
 
-           /* button1.setPreferredSize(dimension);
+            button1.setPreferredSize(dimension);
             button2.setPreferredSize(dimension);
-            button3.setPreferredSize(dimension);*/
+            button3.setPreferredSize(dimension);
 
 
             button1.setFont(font);

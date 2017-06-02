@@ -29,6 +29,8 @@
     <mapping class="entities.NprEntity"/>
     <mapping class="entities.StavkiEntity"/>
     <mapping class="entities.NagrEntity"/>
+    <mapping class="entities.NagrRabEntity"/>
+    <mapping class="entities.GodEntity"/>
 
 
   </session-factory>

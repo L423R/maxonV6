@@ -39,13 +39,11 @@ public class FormRaspFrame extends JFrame {
     private InfoPanel infoPanel;
     private DateButtons dateButtons;
     private RaspEntity raspEntity = new RaspEntity();
-    private List<RaspEntity> raspEntityList;
     private RaspController controller;
 
 
     public FormRaspFrame(RaspController controller) throws HeadlessException {
         this.controller = controller;
-        raspEntityList = Cache.getRaspEntityList();
         Font font = new Font("Verdana",Font.BOLD,18);
         JLabel title = new JLabel("Формирование расписания занятий групп    ");
         title.setFont(font);
@@ -132,7 +130,7 @@ public class FormRaspFrame extends JFrame {
             JButton button = new JButton("OK");
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    List<GroupsEntity> groupsEntityList = Cache.getGroupsEntityList();
+                    List<GroupsEntity> groupsEntityList = NewCache.getCache().getGroupsEntities();
                     ArrayList list = new ArrayList();
                     for (GroupsEntity entity :groupsEntityList)
                     {
@@ -181,7 +179,7 @@ public class FormRaspFrame extends JFrame {
     }
 
     public class GroupPanel extends JPanel{
-        private List<PrepsEntity> prepsEntityList = Cache.getPrepsEntityList();
+        private List<PrepsEntity> prepsEntityList = NewCache.getCache().getPrepsEntities();
         private boolean flag=true;
         private JComboBox prepsNames = new JComboBox();
         public GroupPanel(final ArrayList list) {
